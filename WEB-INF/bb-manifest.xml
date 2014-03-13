@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<manifest>
+  <!-- core extension information -->
+  <plugin>
+    <name value= "OCTET Role Search"/>
+    <handle value= "OCTETSearch"/>
+    <description value= "Search the diretories of the students and faculties in the school."/>
+    <version value= "1.0.0.0"/>
+    <requires>
+    	<bbversion value="7.0.0"/>
+    </requires>
+    <vendor>
+      <id value="octt"/>
+      <name value="OCTET"/>
+      <url value="http://www.oberlin.edu/octet/" />
+      <description value="Oberlin Center for Technologically Enhanced Teaching." />
+    </vendor>
+    <http-actions>
+      <remove value="admin/remove.jsp"/>
+    </http-actions>
+    
+
+    <!-- Tools defined by this extension -->
+    <application-defs>
+      <application handle="RoleSearch" type="shared" use-ssl="false" name="Search User By Role" can-allow-guest="false"
+       small-icon="" large-icon="">
+        <description lang="en_US">Application installed as part of the OCTET Role Search Tool.</description>
+        <links>
+		   <link>
+            <type value="system_tool"/>
+            <name value="Search User By Role"/>
+            <url value="links/search.jsp"/>
+            <description value="Search the diretories of the students and faculties in the school." />
+            <icons>
+              <listitem value="images/icon.gif"/>
+            </icons>
+          </link>
+		   </links>
+	  </application>
+   </application-defs>
+    
+    
+    <!-- code permissions required for proper operation -->
+    <permissions>
+	 <!-- 
+	 	allows the building block to create and manipulate files on the server. 
+	  <permission type="java.io.FilePermission" name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" actions="read,write,delete,execute"/>
+      <permission type="java.util.PropertyPermission" name="*" actions="read,write" /> -->
+      <permission type="persist" name="Content" actions="create,modify,delete"/>
+      <permission type="attribute" name="user.authinfo" actions="get"/>
+	  <permission type="attribute" name="user.personalinfo" actions="get,set" />              
+    </permissions>
+  </plugin>
+
+</manifest>
